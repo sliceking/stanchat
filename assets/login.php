@@ -12,6 +12,7 @@ if(mysqli_num_rows($result)) {
         $output = ['success' => true, 'user_id' => $output['data'][0]['id']];
         $_SESSION['users_id']= $output['user_id'];
     }
-print(json_encode($output));
 }
+print(json_encode($output));
+
 ?>
