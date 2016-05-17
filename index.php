@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!doctype html>
     <html>
         <head>
@@ -14,12 +18,12 @@
         <body>
             <h1>Welcome to StanChat!</h1>
             <h2>Please Login</h2>
-            <form>
-                <input type="text" placeholder="Username">
-                <input type="password" placeholder="Password">
-                <button>Submit</button>
-                <button>Register</button>
-            </form>
+            <input id='username' type="text" placeholder="Username">
+            <input id='password' type="password" placeholder="Password">
+            <div>
+                <button id="login">Login</button>
+                <button id="register">Register</button>
+            </div>
 
         </body>
     </html>
