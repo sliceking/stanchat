@@ -27,7 +27,7 @@
         height:10%;
         width:100%;
     }
-    
+
     .main_container input{
         height:100%;
         width:100%;
@@ -39,10 +39,10 @@
 
     </div>
     <div class="online_users">
-
+        <p>users will go here</p>
     </div>
     <div class="text_input">
-        <input id="chat_input" placeholder="enter message here">
+        <input id="chat_input" type='text' placeholder="enter message here">
     </div>
 
 </div>

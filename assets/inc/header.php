@@ -14,7 +14,7 @@
     .header_div img{
         position:absolute;
         width:75px;
-        left:47%;
+        left:50%;
         z-index: 10;
     }
     .header_div h4:hover{

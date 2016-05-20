@@ -70,6 +70,26 @@ function chat_post(text){
 
     })
 }
+function fetch_latest(){
+    console.log('latest fired');
+    $.ajax({
+        dataType: 'JSON',
+        url: './assets/fetch_latest.php',
+        success: function (response) {
+            var response = response;
+            var responseData = response.data;
+                var chat_div = $('<div>',{
+                    class:'chat_line'
+                });
+                var chat_text = $('<p>',{
+                    text:responseData[0].timestamp + ' | ' + responseData[0].user + ' : ' + responseData[0].text
+                });
+                $(chat_div).append(chat_text);
+                $('.chat_history').append(chat_div);
+
+        }
+    })
+}
 $(document).ready(function(){
     var login = $('#login');
     var password_box = $('#password');
@@ -93,8 +113,9 @@ $(document).ready(function(){
         if(event.keyCode === 13){
             var chat_text = $(chat_input).val();
             chat_post(chat_text);
-            location.reload();
-
+            // location.reload();
+            fetch_latest();
+            chat_input.val('');
         }
     });
     $(password_box).keydown(function(){
