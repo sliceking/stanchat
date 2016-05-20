@@ -1,5 +1,6 @@
 <?php
     session_start();
+    $page = 'splash';
 ?>
 
 <!doctype html>
@@ -18,10 +19,9 @@
         <body>
             <?php
                 include('./assets/inc/header.php');
-                include('./assets/inc/splash.php');
+//                include("./assets/inc/$page.php");
+                include('./assets/inc/main.php');
                 include('./assets/inc/footer.php');
-
             ?>
-
         </body>
     </html>

@@ -15,6 +15,7 @@
         position:absolute;
         width:75px;
         left:47%;
+        z-index: 10;
     }
 </style>
 <div class="header_div">
