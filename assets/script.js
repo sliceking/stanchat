@@ -12,6 +12,7 @@ function entrance(type,username,password){
             var responseData = response;
             console.log(responseData);
             console.log('entrance complete');
+            location.reload();
         }
         
     })
@@ -20,18 +21,28 @@ function logout(){
     console.log('logout fired');
     $.ajax({
         dataType:'JSON',
-        // data:{
-        //     username: username,
-        //     password: password
-        // },
-        // method: 'post',
         url: './assets/logout.php',
         success: function(response){
             var responseData = response;
             console.log(responseData);
             console.log('logged out');
+            location.reload();
         }
+    })
+}
+function fetch_history() {
+    console.log('history fired');
+    $.ajax({
+        dataType: 'JSON',
+        url: './assets/fetch_history.php',
+        success: function (response) {
+            var response = response;
+            var responseData = response.data;
+            for(var i=0; i<responseData.length; i++){
+                console.log(responseData[i]);
 
+            }
+        }
     })
 }
 $(document).ready(function(){

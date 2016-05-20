@@ -25,7 +25,13 @@
             <?php
                 include('./assets/inc/header.php');
                 include("./assets/inc/$page.php");
-//                include('./assets/inc/main.php');
+                if ($page === 'main'){
+                    ?>
+                    <script>
+                        fetch_history();
+                    </script>
+                    <?php
+                }
                 include('./assets/inc/footer.php');
             ?>
         </body>
