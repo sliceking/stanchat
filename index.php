@@ -16,14 +16,12 @@
             <script src="./assets/script.js"></script>
         </head>
         <body>
-            <h1>Welcome to StanChat!</h1>
-            <h2>Please Login</h2>
-            <input id='username' type="text" placeholder="Username">
-            <input id='password' type="password" placeholder="Password">
-            <div>
-                <button id="login">Login</button>
-                <button id="register">Register</button>
-            </div>
+            <?php
+                include('./assets/inc/header.php');
+                include('./assets/inc/splash.php');
+                include('./assets/inc/footer.php');
+
+            ?>
 
         </body>
     </html>
