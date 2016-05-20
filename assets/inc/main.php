@@ -27,10 +27,7 @@
         height:10%;
         width:100%;
     }
-    .chat_line{
-        position:relative;
-        top:80%;
-    }
+    
     .main_container input{
         height:100%;
         width:100%;

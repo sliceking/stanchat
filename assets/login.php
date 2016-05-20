@@ -9,7 +9,7 @@ $output = ['success'=>false];
 if(mysqli_num_rows($result)) {
     while ($row = mysqli_fetch_assoc($result)) {
         $output['data'][] = $row;
-        $output = ['success' => true, 'user_id' => $output['data'][0]['id']];
+        $output = ['success' => true, 'user_id' => $output['data'][0]['login']];
         $_SESSION['users_id']= $output['user_id'];
     }
 }

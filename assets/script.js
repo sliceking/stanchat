@@ -52,15 +52,34 @@ function fetch_history() {
         }
     })
 }
+function chat_post(text){
+    console.log('post fired');
+    $.ajax({
+        dataType:'JSON',
+        data:{
+            text: text
+        },
+        method: 'post',
+        url: './assets/chat_post.php',
+        success: function(response){
+            var responseData = response;
+            console.log(responseData);
+            console.log('post complete');
+
+        }
+
+    })
+}
 $(document).ready(function(){
     var login = $('#login');
+    var password_box = $('#password');
     var register = $('#register');
     var logout_button = $('#logout');
     var chat_input = $('#chat_input');
     login.click(function(){
         var username = $('#username').val();
         var password = $('#password').val();
-       entrance('login',username,password);
+        entrance('login',username,password);
    });
     register.click(function(){
         var username = $('#username').val();
@@ -72,7 +91,18 @@ $(document).ready(function(){
     });
     $(chat_input).keydown(function(){
         if(event.keyCode === 13){
-            console.log('enter pressed');
+            var chat_text = $(chat_input).val();
+            chat_post(chat_text);
+            location.reload();
+
         }
-    })
+    });
+    $(password_box).keydown(function(){
+        if(event.keyCode === 13){
+            var username = $('#username').val();
+            var password = $('#password').val();
+            entrance('login',username,password);
+        }
+    });
+
 });
