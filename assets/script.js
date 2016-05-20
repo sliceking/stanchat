@@ -56,6 +56,7 @@ $(document).ready(function(){
     var login = $('#login');
     var register = $('#register');
     var logout_button = $('#logout');
+    var chat_input = $('#chat_input');
     login.click(function(){
         var username = $('#username').val();
         var password = $('#password').val();
@@ -68,5 +69,10 @@ $(document).ready(function(){
     });
     logout_button.click(function(){
         logout();
+    });
+    $(chat_input).keydown(function(){
+        if(event.keyCode === 13){
+            console.log('enter pressed');
+        }
     })
 });

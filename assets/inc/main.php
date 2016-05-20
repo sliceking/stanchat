@@ -31,6 +31,10 @@
         position:relative;
         top:80%;
     }
+    .main_container input{
+        height:100%;
+        width:100%;
+    }
 </style>
 
 <div class="main_container">
@@ -41,7 +45,7 @@
 
     </div>
     <div class="text_input">
-        
+        <input id="chat_input" placeholder="enter message here">
     </div>
 
 </div>
