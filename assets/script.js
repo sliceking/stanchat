@@ -16,9 +16,28 @@ function entrance(type,username,password){
         
     })
 }
+function logout(){
+    console.log('logout fired');
+    $.ajax({
+        dataType:'JSON',
+        // data:{
+        //     username: username,
+        //     password: password
+        // },
+        // method: 'post',
+        url: './assets/logout.php',
+        success: function(response){
+            var responseData = response;
+            console.log(responseData);
+            console.log('logged out');
+        }
+
+    })
+}
 $(document).ready(function(){
     var login = $('#login');
     var register = $('#register');
+    var logout_button = $('#logout');
     login.click(function(){
         var username = $('#username').val();
         var password = $('#password').val();
@@ -28,5 +47,8 @@ $(document).ready(function(){
         var username = $('#username').val();
         var password = $('#password').val();
         entrance('register',username,password);
+    });
+    logout_button.click(function(){
+        logout();
     })
 });

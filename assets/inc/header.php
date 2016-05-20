@@ -22,4 +22,5 @@
     <h4>StanChat</h4>
     <img src="./assets/images/stan2.png"/>
     <h4>About</h4>
+    <h4 id="logout">Logout</h4>
 </div>

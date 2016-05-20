@@ -1,6 +1,10 @@
 <?php
     session_start();
-    $page = 'splash';
+    if(empty($_SESSION)){
+        $page = 'splash';
+    }else{
+        $page = 'main';
+    }
 ?>
 
 <!doctype html>
@@ -17,10 +21,11 @@
             <script src="./assets/script.js"></script>
         </head>
         <body>
+
             <?php
                 include('./assets/inc/header.php');
-//                include("./assets/inc/$page.php");
-                include('./assets/inc/main.php');
+                include("./assets/inc/$page.php");
+//                include('./assets/inc/main.php');
                 include('./assets/inc/footer.php');
             ?>
         </body>
