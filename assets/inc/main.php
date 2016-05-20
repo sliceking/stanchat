@@ -35,7 +35,7 @@
 </style>
 
 <div class="main_container">
-    <div class="chat_history">
+    <div id='chat_history' class="chat_history">
 
     </div>
     <div class="online_users">
