@@ -40,7 +40,14 @@ function fetch_history() {
             var responseData = response.data;
             for(var i=0; i<responseData.length; i++){
                 console.log(responseData[i]);
-
+                var chat_div = $('<div>',{
+                    class:'chat_line'
+                });
+                var chat_text = $('<p>',{
+                    text:responseData[i].timestamp + ' | ' + responseData[i].user + ' : ' + responseData[i].text
+                });
+                $(chat_div).append(chat_text);
+                $('.chat_history').append(chat_div);
             }
         }
     })

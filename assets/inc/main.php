@@ -27,6 +27,10 @@
         height:10%;
         width:100%;
     }
+    .chat_line{
+        position:relative;
+        top:80%;
+    }
 </style>
 
 <div class="main_container">
