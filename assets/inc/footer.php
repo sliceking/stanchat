@@ -15,5 +15,5 @@
 
 </style>
 <div class="footer_div">
-    <h4>Stan Wielga 2016</h4>
+    <h4>&copy Stan Wielga 2016</h4>
 </div>

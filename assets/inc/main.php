@@ -32,14 +32,20 @@
         height:100%;
         width:100%;
     }
+    .users_line:hover{
+        cursor:pointer;
+    }
+    .user_clicked{
+        background-color: #9df39f;
+    }
 </style>
 
 <div class="main_container">
     <div id='chat_history' class="chat_history">
 
     </div>
-    <div class="online_users">
-        <p>users will go here</p>
+    <div id='online_users' class="online_users">
+        
     </div>
     <div class="text_input">
         <input id="chat_input" type='text' placeholder="enter message here">

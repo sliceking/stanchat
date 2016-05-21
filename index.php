@@ -29,6 +29,7 @@
                     ?>
                     <script>
                         fetch_history();
+                        fetch_online_users();
                     </script>
                     <?php
                 }

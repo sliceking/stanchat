@@ -1,8 +1,13 @@
 <?php
     session_start();
-    session_unset();
-    session_destroy();
-    $output = 'logged out';
+    require('mysql_connect.php');
+    $username = $_SESSION['users_id'];
+    $query = "UPDATE `users` SET `active` = '0' WHERE `login` = '$username'";
+    if(mysqli_query($conn, $query)){
+        $output['active_reset'][]=true;
+        session_unset();
+        session_destroy();
+    };
     print(json_encode($output));
 
 ?>

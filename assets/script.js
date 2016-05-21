@@ -9,7 +9,8 @@ function entrance(type,username,password){
         method: 'post',
         url: './assets/' +type + '.php',
         success: function(response){
-            var responseData = response;
+            var response = response;
+            var responseData = response.data;
             console.log(responseData);
             console.log('entrance complete');
             location.reload();
@@ -54,6 +55,31 @@ function fetch_history() {
         }
     })
 }
+function fetch_online_users(){
+    console.log('history fired');
+    $.ajax({
+        dataType: 'JSON',
+        url: './assets/fetch_users.php',
+        success: function (response) {
+            var response = response;
+            console.log(response);
+            var responseData = response.data;
+            var online_users = $('#online_users');
+            for(var i=0; i<responseData.length; i++){
+                console.log(responseData[i]);
+                var users_div = $('<div>',{
+                    class:'users_line'
+                });
+                var users_text = $('<p>',{
+                    text:responseData[i].login
+                });
+                $(users_div).append(users_text);
+                online_users.append(users_div);
+            }
+            
+        }
+    })
+}
 function chat_post(text){
     console.log('post fired');
     $.ajax({
@@ -81,16 +107,18 @@ function fetch_latest(){
             var response = response;
             var responseData = response.data;
             var chat_history = $('#chat_history');
-
-            var chat_div = $('<div>', {
-                class: 'chat_line'
-            });
-            var chat_text = $('<p>', {
-                text: responseData[0].timestamp + ' | ' + responseData[0].user + ' : ' + responseData[0].text
-            });
-            $(chat_div).append(chat_text);
-            chat_history.append(chat_div);
-
+            for(var i=0; i<responseData.length; i++){
+                console.log(responseData[i]);
+                var chat_div = $('<div>',{
+                    class:'chat_line'
+                });
+                var chat_text = $('<p>',{
+                    text:responseData[i].timestamp + ' | ' + responseData[i].user + ' : ' + responseData[i].text
+                });
+                $(chat_div).append(chat_text);
+                chat_history.append(chat_div);
+                chat_history.scrollTop(chat_history[0].scrollHeight);
+            }
         }
     })
 }
@@ -128,5 +156,5 @@ $(document).ready(function(){
             entrance('login',username,password);
         }
     });
-
+    
 });
