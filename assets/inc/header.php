@@ -44,7 +44,7 @@
             </div>
             <div class="modal-body">
                 <p>Stan is an adventurer, and web developer with a passion for communication. </p>
-                <p>He enjoys his time by traveling to a from the mountaintops, where he learns the secrets of the universe. </p>
+                <p>He enjoys his time by traveling to a from the mountaintops, where he learns the secrets about life and the universe. </p>
                 <p>During his latest of travels, the mountains told him to make a chat application. </p>
             </div>
         </div>
