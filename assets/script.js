@@ -90,6 +90,9 @@ function fetch_online_users(){
 }
 function chat_post(text){
     console.log('post fired');
+    if (text === ''){
+        return;
+    }
     $.ajax({
         dataType:'JSON',
         data:{
