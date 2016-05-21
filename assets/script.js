@@ -1,5 +1,4 @@
 function entrance(username,password){
-    // console.log('entrance fired');
     $.ajax({
         dataType:'JSON',
         data:{
@@ -57,6 +56,7 @@ function fetch_history() {
                 chat_history.prepend(chat_div);
                 chat_history.scrollTop(chat_history[0].scrollHeight);
             }
+            $('p').linkify();
         }
     })
 }
@@ -99,30 +99,30 @@ function chat_post(text){
         }
     })
 }
-function fetch_latest(){
-    console.log('latest fired');
-    $.ajax({
-        dataType: 'JSON',
-        url: './assets/fetch_latest.php',
-        success: function (response) {
-            var response = response;
-            var responseData = response.data;
-            var chat_history = $('#chat_history');
-            for(var i=0; i<responseData.length; i++){
-                console.log(responseData[i]);
-                var chat_div = $('<div>',{
-                    class:'chat_line'
-                });
-                var chat_text = $('<p>',{
-                    text:responseData[i].timestamp + ' | ' + responseData[i].user + ' : ' + responseData[i].text
-                });
-                $(chat_div).append(chat_text);
-                chat_history.append(chat_div);
-                chat_history.scrollTop(chat_history[0].scrollHeight);
-            }
-        }
-    })
-}
+// function fetch_latest(){
+//     console.log('latest fired');
+//     $.ajax({
+//         dataType: 'JSON',
+//         url: './assets/fetch_latest.php',
+//         success: function (response) {
+//             var response = response;
+//             var responseData = response.data;
+//             var chat_history = $('#chat_history');
+//             for(var i=0; i<responseData.length; i++){
+//                 console.log(responseData[i]);
+//                 var chat_div = $('<div>',{
+//                     class:'chat_line'
+//                 });
+//                 var chat_text = $('<p>',{
+//                     text:responseData[i].timestamp + ' | ' + responseData[i].user + ' : ' + responseData[i].text
+//                 });
+//                 $(chat_div).append(chat_text);
+//                 chat_history.append(chat_div);
+//                 chat_history.scrollTop(chat_history[0].scrollHeight);
+//             }
+//         }
+//     })
+// }
 function add_user_check(){
     var registration_section = $('#registration_section');
     var username = $('#register_username');
