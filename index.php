@@ -30,6 +30,8 @@
                     <script>
                         fetch_history();
                         fetch_online_users();
+                        setInterval(fetch_history,2500);
+                        setInterval(fetch_online_users,4000);
                     </script>
                     <?php
                 }

@@ -1,5 +1,5 @@
 function entrance(username,password){
-    console.log('entrance fired');
+    // console.log('entrance fired');
     $.ajax({
         dataType:'JSON',
         data:{
@@ -26,7 +26,7 @@ function entrance(username,password){
     })
 }
 function logout(){
-    console.log('logout fired');
+    // console.log('logout fired');
     $.ajax({
         dataType:'JSON',
         url: './assets/logout.php',
@@ -39,7 +39,7 @@ function logout(){
     })
 }
 function fetch_history() {
-    console.log('history fired');
+    // console.log('history fired');
     $.ajax({
         dataType: 'JSON',
         url: './assets/fetch_history.php',
@@ -47,8 +47,9 @@ function fetch_history() {
             var response = response;
             var responseData = response.data;
             var chat_history = $('#chat_history');
+            $(chat_history).empty();
             for(var i=0; i<responseData.length; i++){
-                console.log(responseData[i]);
+                // console.log(responseData[i]);
                 var chat_div = $('<div>',{
                     class:'chat_line'
                 });
@@ -56,24 +57,25 @@ function fetch_history() {
                     text:responseData[i].timestamp + ' | ' + responseData[i].user + ' : ' + responseData[i].text
                 });
                 $(chat_div).append(chat_text);
-                chat_history.append(chat_div);
+                chat_history.prepend(chat_div);
                 chat_history.scrollTop(chat_history[0].scrollHeight);
             }
         }
     })
 }
 function fetch_online_users(){
-    console.log('history fired');
+    // console.log('history fired');
     $.ajax({
         dataType: 'JSON',
         url: './assets/fetch_users.php',
         success: function (response) {
             var response = response;
-            console.log(response);
+            // console.log(response);
             var responseData = response.data;
             var online_users = $('#online_users');
+            $(online_users).empty();
             for(var i=0; i<responseData.length; i++){
-                console.log(responseData[i]);
+                // console.log(responseData[i]);
                 var users_div = $('<div>',{
                     class:'users_line'
                 });
@@ -97,8 +99,8 @@ function chat_post(text){
         url: './assets/chat_post.php',
         success: function(response){
             var responseData = response;
-            console.log(responseData);
-            console.log('post complete');
+            // console.log(responseData);
+            // console.log('post complete');
 
         }
 
@@ -218,7 +220,7 @@ $(document).ready(function(){
         if(event.keyCode === 13){
             var chat_text = $(chat_input).val();
             chat_post(chat_text);
-            fetch_latest();
+            fetch_history();
             chat_input.val('');
         }
     });
@@ -226,7 +228,7 @@ $(document).ready(function(){
         if(event.keyCode === 13){
             var username = $('#username').val();
             var password = $('#password').val();
-            entrance('login',username,password);
+            entrance(username,password);
         }
     });
 });
