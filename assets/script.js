@@ -26,7 +26,6 @@ function entrance(username,password){
     })
 }
 function logout(){
-    // console.log('logout fired');
     $.ajax({
         dataType:'JSON',
         url: './assets/logout.php',
@@ -39,7 +38,6 @@ function logout(){
     })
 }
 function fetch_history() {
-    // console.log('history fired');
     $.ajax({
         dataType: 'JSON',
         url: './assets/fetch_history.php',
@@ -49,7 +47,6 @@ function fetch_history() {
             var chat_history = $('#chat_history');
             $(chat_history).empty();
             for(var i=0; i<responseData.length; i++){
-                // console.log(responseData[i]);
                 var chat_div = $('<div>',{
                     class:'chat_line'
                 });
@@ -64,18 +61,15 @@ function fetch_history() {
     })
 }
 function fetch_online_users(){
-    // console.log('history fired');
     $.ajax({
         dataType: 'JSON',
         url: './assets/fetch_users.php',
         success: function (response) {
             var response = response;
-            // console.log(response);
             var responseData = response.data;
             var online_users = $('#online_users');
             $(online_users).empty();
             for(var i=0; i<responseData.length; i++){
-                // console.log(responseData[i]);
                 var users_div = $('<div>',{
                     class:'users_line'
                 });
@@ -102,11 +96,7 @@ function chat_post(text){
         url: './assets/chat_post.php',
         success: function(response){
             var responseData = response;
-            // console.log(responseData);
-            // console.log('post complete');
-
         }
-
     })
 }
 function fetch_latest(){
