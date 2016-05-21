@@ -1,4 +1,4 @@
-function entrance(type,username,password){
+function entrance(username,password){
     console.log('entrance fired');
     $.ajax({
         dataType:'JSON',
@@ -7,15 +7,22 @@ function entrance(type,username,password){
             password: password
         },
         method: 'post',
-        url: './assets/' +type + '.php',
+        url: './assets/login.php',
         success: function(response){
             var response = response;
-            var responseData = response.data;
-            console.log(responseData);
-            console.log('entrance complete');
-            location.reload();
+            if(response.success === true){
+                location.reload();
+            }else{
+                var fail_div = $('<div>',{
+                    class:'login_fail'
+                });
+                var fail_text = $('<p>',{
+                    text:'-Incorrect Username and/or Password.'
+                });
+                $(fail_div).append(fail_text);
+                $('#login_section').append(fail_div);
+            }
         }
-        
     })
 }
 function logout(){
@@ -76,7 +83,6 @@ function fetch_online_users(){
                 $(users_div).append(users_text);
                 online_users.append(users_div);
             }
-            
         }
     })
 }
@@ -122,6 +128,75 @@ function fetch_latest(){
         }
     })
 }
+function add_user_check(){
+    var registration_section = $('#registration_section');
+    var username = $('#register_username');
+    var password = $('#register_password');
+    var confirm_password = $('#register_password2');
+    var clear = true;
+    $('.login_fail').remove();
+    if(username.val() === ''){
+        var username_fail = $('<p>',{
+            text:'Please Enter a username',
+            class:'login_fail'
+        });
+        $(registration_section).append(username_fail);
+        clear = false;
+        console.log('username not clear');
+
+    }
+    if ($(password).val() === ''){
+        var password_fail = $('<p>',{
+            text:'Please Enter a password',
+            class:'login_fail'
+        });
+        $(registration_section).append(password_fail);
+        clear = false;
+        console.log('password not clear');
+
+    }
+    if($(password).val() !== $(confirm_password).val()){
+        var password_mismatch = $('<p>',{
+            text:'Passwords do not match',
+            class:'login_fail'
+        });
+        $(registration_section).append(password_mismatch);
+        clear = false;
+        console.log('passwords are not cleared');
+
+    }
+    if (clear){
+        console.log('clear');
+        add_user_ajax(username.val(),password.val());
+    }
+}
+function add_user_ajax(username,password){
+    $.ajax({
+        dataType:'JSON',
+        data:{
+            username: username,
+            password: password
+        },
+        method: 'post',
+        url: './assets/add_user.php',
+        success: function(response){
+            var responseData = response;
+            console.log(responseData);
+            if(response.success === true){
+                location.reload();
+            }else{
+                var fail_div = $('<div>',{
+                    class:'login_fail'
+                });
+                var fail_text = $('<p>',{
+                    text:'Registration failed.'
+                });
+                $(fail_div).append(fail_text);
+                $('#registration_section').append(fail_div);
+            }
+        }
+    })
+}
 $(document).ready(function(){
     var login = $('#login');
     var password_box = $('#password');
@@ -131,12 +206,10 @@ $(document).ready(function(){
     login.click(function(){
         var username = $('#username').val();
         var password = $('#password').val();
-        entrance('login',username,password);
+        entrance(username,password);
    });
     register.click(function(){
-        var username = $('#username').val();
-        var password = $('#password').val();
-        entrance('register',username,password);
+        add_user_check();
     });
     logout_button.click(function(){
         logout();
@@ -156,5 +229,4 @@ $(document).ready(function(){
             entrance('login',username,password);
         }
     });
-    
 });
