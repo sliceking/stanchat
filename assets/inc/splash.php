@@ -13,6 +13,7 @@
         position:relative;
         top:10%;
     }
+
 </style>
 <div class="splash_header">
     <h1>Welcome to StanChat!</h1>
