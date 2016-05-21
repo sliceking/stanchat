@@ -224,4 +224,10 @@ $(document).ready(function(){
             entrance(username,password);
         }
     });
+    if(main){
+        window.onbeforeunload = function(event) {
+            logout();
+        };
+    }
+
 });

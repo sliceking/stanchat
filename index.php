@@ -30,6 +30,7 @@
                 if ($page === 'main'){
                     ?>
                     <script>
+                        var main = true;
                         fetch_history();
                         fetch_online_users();
                         setInterval(fetch_history,2500);
