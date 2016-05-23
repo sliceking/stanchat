@@ -205,6 +205,7 @@ $(document).ready(function(){
     var password_box = $('#password');
     var register = $('#register');
     var logout_button = $('#logout');
+    var chat_input = $('#chat_input');
     login.click(function(){
         var username = $('#username').val();
         var password = $('#password').val();
@@ -231,10 +232,10 @@ $(document).ready(function(){
     $('#send').click(function(){
         send_chat();
     });
-    // if(main){
-    //     window.onbeforeunload = function(event) {
-    //         logout();
-    //     };
-    // }
+    if(main){
+        window.onbeforeunload = function(event) {
+            logout();
+        };
+    }
 
 });
