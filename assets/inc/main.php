@@ -38,6 +38,12 @@
     .user_clicked{
         background-color: #9df39f;
     }
+    .send_button{
+        position:absolute;
+        right:0;
+        bottom:0;
+        height:100%;
+    }
 </style>
 
 <div class="main_container">
@@ -49,6 +55,7 @@
     </div>
     <div class="text_input">
         <input id="chat_input" type='text' placeholder="enter message here">
+        <button class='send_button' id="send">Send</button>
     </div>
 
 </div>

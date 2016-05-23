@@ -192,13 +192,19 @@ function add_user_ajax(username,password){
         }
     })
 }
+function send_chat(){
+    var chat_input = $('#chat_input');
+    var chat_text = $(chat_input).val();
+    chat_post(chat_text);
+    fetch_history();
+    chat_input.val('');
+}
 
 $(document).ready(function(){
     var login = $('#login');
     var password_box = $('#password');
     var register = $('#register');
     var logout_button = $('#logout');
-    var chat_input = $('#chat_input');
     login.click(function(){
         var username = $('#username').val();
         var password = $('#password').val();
@@ -212,10 +218,7 @@ $(document).ready(function(){
     });
     $(chat_input).keydown(function(event){
         if(event.keyCode === 13){
-            var chat_text = $(chat_input).val();
-            chat_post(chat_text);
-            fetch_history();
-            chat_input.val('');
+            send_chat();
         }
     });
     $(password_box).keydown(function(event){
@@ -225,10 +228,13 @@ $(document).ready(function(){
             entrance(username,password);
         }
     });
-    if(main){
-        window.onbeforeunload = function(event) {
-            logout();
-        };
-    }
+    $('#send').click(function(){
+        send_chat();
+    });
+    // if(main){
+    //     window.onbeforeunload = function(event) {
+    //         logout();
+    //     };
+    // }
 
 });
