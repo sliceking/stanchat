@@ -192,6 +192,7 @@ function add_user_ajax(username,password){
         }
     })
 }
+
 $(document).ready(function(){
     var login = $('#login');
     var password_box = $('#password');
@@ -209,7 +210,7 @@ $(document).ready(function(){
     logout_button.click(function(){
         logout();
     });
-    $(chat_input).keydown(function(){
+    $(chat_input).keydown(function(event){
         if(event.keyCode === 13){
             var chat_text = $(chat_input).val();
             chat_post(chat_text);
@@ -217,7 +218,7 @@ $(document).ready(function(){
             chat_input.val('');
         }
     });
-    $(password_box).keydown(function(){
+    $(password_box).keydown(function(event){
         if(event.keyCode === 13){
             var username = $('#username').val();
             var password = $('#password').val();
