@@ -1,4 +1,4 @@
-var old_latest_entry = null; //variable to compare new chat history to, and scroll to bottom
+var old_latest_entry = null; //variable to compare new chat history to for auto scrolling to bottom
 
 function entrance(username,password){
     $.ajax({
