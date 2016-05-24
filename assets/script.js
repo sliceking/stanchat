@@ -238,10 +238,10 @@ $(document).ready(function(){
     $('#send').click(function(){
         send_chat();
     });
-    // if(main){
-    //     window.onbeforeunload = function(event) {
-    //         logout();
-    //     };
-    // }
+    if(main){
+        window.onbeforeunload = function(event) {
+            logout();
+        };
+    }
 
 });
