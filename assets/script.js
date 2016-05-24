@@ -1,3 +1,5 @@
+var old_latest_entry = null; //variable to compare new chat history to, and scroll to bottom
+
 function entrance(username,password){
     $.ajax({
         dataType:'JSON',
@@ -41,10 +43,10 @@ function fetch_history() {
         dataType: 'JSON',
         url: './assets/fetch_history.php',
         success: function (response) {
-            var response = response;
             var responseData = response.data;
             var chat_history = $('#chat_history');
             $(chat_history).empty();
+            
             for(var i=0; i<responseData.length; i++){
                 var chat_div = $('<div>',{
                     class:'chat_line'
@@ -54,8 +56,12 @@ function fetch_history() {
                 });
                 $(chat_div).append(chat_text);
                 chat_history.prepend(chat_div);
+
+            }
+            if (old_latest_entry !== responseData[0].text){
                 chat_history.scrollTop(chat_history[0].scrollHeight);
             }
+            old_latest_entry = responseData[0].text;
             $('p').linkify();
         }
     })
@@ -232,10 +238,10 @@ $(document).ready(function(){
     $('#send').click(function(){
         send_chat();
     });
-    if(main){
-        window.onbeforeunload = function(event) {
-            logout();
-        };
-    }
+    // if(main){
+    //     window.onbeforeunload = function(event) {
+    //         logout();
+    //     };
+    // }
 
 });
