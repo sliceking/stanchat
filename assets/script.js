@@ -1,6 +1,6 @@
 
 var old_latest_entry = null; //variable to compare new chat history to for auto scrolling to bottom
-// var main = false;
+var main = false;
 
 function entrance(username,password){
     $.ajax({
@@ -14,9 +14,10 @@ function entrance(username,password){
         url: './assets/operations.php',
         success: function(response){
             var response = response;
+            console.log(response);
+
             if(response.success === true){
                 // location.reload();
-                console.log(response);
             }else{
                 var fail_div = $('<div>',{
                     class:'login_fail'

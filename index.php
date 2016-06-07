@@ -1,10 +1,5 @@
 <?php
     session_start();
-    if(empty($_SESSION)){
-        $page = 'splash';
-    }else{
-        $page = 'main';
-    }
 ?>
 
 <!doctype html>
@@ -22,10 +17,19 @@
         <body>
 
             <?php
+
+                if(empty($_SESSION)){
+                    $page = 'splash';
+
+                }else{
+                    $page = 'main';
+                }
+
                 include('./assets/inc/header.php');
                 include("./assets/inc/$page.php");
+
                 if ($page === 'main'){
-                    ?>
+            ?>
                     <script>
                         var main = true;
                         fetch_history();
