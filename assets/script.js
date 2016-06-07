@@ -1,18 +1,22 @@
+
 var old_latest_entry = null; //variable to compare new chat history to for auto scrolling to bottom
+// var main = false;
 
 function entrance(username,password){
     $.ajax({
         dataType:'JSON',
         data:{
             username: username,
-            password: password
+            password: password,
+            operation:'login'
         },
         method: 'post',
-        url: './assets/login.php',
+        url: './assets/operations.php',
         success: function(response){
             var response = response;
             if(response.success === true){
-                location.reload();
+                // location.reload();
+                console.log(response);
             }else{
                 var fail_div = $('<div>',{
                     class:'login_fail'
@@ -29,7 +33,10 @@ function entrance(username,password){
 function logout(){
     $.ajax({
         dataType:'JSON',
-        url: './assets/logout.php',
+        url: './assets/operations.php',
+        data:{
+            operation:'logout'
+        },
         success: function(response){
             var responseData = response;
             console.log(responseData);
@@ -41,7 +48,10 @@ function logout(){
 function fetch_history() {
     $.ajax({
         dataType: 'JSON',
-        url: './assets/fetch_history.php',
+        data:{
+            operation:'fetch_history'
+        },
+        url: './assets/operations.php',
         success: function (response) {
             var responseData = response.data;
             var chat_history = $('#chat_history');
@@ -69,6 +79,9 @@ function fetch_history() {
 function fetch_online_users(){
     $.ajax({
         dataType: 'JSON',
+        data:{
+            operation:'fetch_users'
+        },
         url: './assets/fetch_users.php',
         success: function (response) {
             var response = response;
@@ -96,7 +109,8 @@ function chat_post(text){
     $.ajax({
         dataType:'JSON',
         data:{
-            text: text
+            text: text,
+            operation:'chat_post'
         },
         method: 'post',
         url: './assets/chat_post.php',
@@ -153,7 +167,8 @@ function add_user_ajax(username,password){
         dataType:'JSON',
         data:{
             username: username,
-            password: password
+            password: password,
+            operation:'add_user'
         },
         method: 'post',
         url: './assets/add_user.php',
