@@ -4,10 +4,10 @@
     $username = $_SESSION['users_id'];
     $query = "UPDATE `users` SET `active` = '0' WHERE `login` = '$username'";
     if(mysqli_query($conn, $query)){
-        $output['active_reset'][]=true;
+        $data['active_reset'][]=true;
         session_unset();
         session_destroy();
     };
-    print(json_encode($output));
+    print(json_encode($data));
 
 ?>

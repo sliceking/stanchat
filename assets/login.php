@@ -22,17 +22,17 @@ $password = trim(filter_input(INPUT_POST,'password',FILTER_SANITIZE_STRING));
 $query = "SELECT * FROM `users` WHERE login = '$username' and pass = '$password'";
 $query2 = "UPDATE `users` SET `active` = '1' WHERE `login` = '$username'";
 $result = mysqli_query($conn, $query);
-$data = ['success'=>false];
+$output = ['success'=>false];
 if(mysqli_num_rows($result)) {
     while ($row = mysqli_fetch_assoc($result)) {
-        $data['data'][] = $row;
-        $data = ['success' => true, 'user_id' => $output['data'][0]['login']];
-        $_SESSION['users_id']= $data['user_id'];
+        $output['data'][] = $row;
+        $output = ['success' => true, 'user_id' => $output['data'][0]['login']];
+        $_SESSION['users_id']= $output['user_id'];
     }
     if(mysqli_query($conn, $query2)){
-        $data['active'][] = true;
+        $output['active'][] = true;
     };
 }
-//print(json_encode($output));
+print(json_encode($output));
 
 ?>

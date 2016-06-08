@@ -11,9 +11,8 @@ function entrance(username,password){
             operation:'login'
         },
         method: 'post',
-        url: './assets/operations.php',
+        url: './assets/login.php',
         success: function(response){
-            var response = response;
             console.log(response);
 
             if(response.success === true){
@@ -34,7 +33,7 @@ function entrance(username,password){
 function logout(){
     $.ajax({
         dataType:'JSON',
-        url: './assets/operations.php',
+        url: './assets/logout.php',
         data:{
             operation:'logout'
         },
@@ -52,7 +51,7 @@ function fetch_history() {
         data:{
             operation:'fetch_history'
         },
-        url: './assets/operations.php',
+        url: './assets/fetch_history.php',
         success: function (response) {
             var responseData = response.data;
             var chat_history = $('#chat_history');
