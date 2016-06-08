@@ -7,8 +7,17 @@ $password = trim(filter_input(INPUT_POST,'password',FILTER_SANITIZE_STRING));
 $output['username'] = $username;
 
 try{
-    $results = $dbh->query("SELECT * FROM `users` WHERE login = '$username' and pass = '$password'");
-    $output = ['success' => true, 'data' => $results->fetchAll(PDO::FETCH_ASSOC)];
+
+    $results = $dbh->query("SELECT login FROM `users` WHERE login = '$username' and pass = '$password'");
+    $login_result = $results->fetchAll(PDO::FETCH_ASSOC);
+
+    if (isset($login_result[0])){
+        $output = ['success' => true, 'data' => $login_result];
+    } else{
+        $output = ['success' => true, 'data' => 'invalid login information'];
+    }
+
+
 } catch(Exception $e){
     $outpt['exception'] = 'dead';
     exit;
