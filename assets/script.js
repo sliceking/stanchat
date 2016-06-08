@@ -3,6 +3,7 @@ var old_latest_entry = null; //variable to compare new chat history to for auto 
 var main = false;
 
 function entrance(username,password){
+    console.log('getting to entrance');
     $.ajax({
         dataType:'JSON',
         data:{
@@ -11,9 +12,10 @@ function entrance(username,password){
             operation:'login'
         },
         method: 'post',
-        url: './assets/login.php',
+        url: './assets/operations.php',
         success: function(response){
             console.log(response);
+            console.log('im getting through');
 
             if(response.success === true){
                 // location.reload();

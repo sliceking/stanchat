@@ -4,35 +4,32 @@ session_start();
 
 include('connection.php');
 
-$data = ['success' => false];
+$output = ['success' => false];
+$output['post']= $_POST['operation'];
 
-$operation = $_POST['operation'];
+    if ($_POST['operation'] == 'login') {
+        include('login.php');
+    }
 
-if ($operation == 'login'){
-    include('login.php');
+//}elseif ($_POST['operation'] == 'add_user'){
+//    include('add_user.php');
+//
+//}elseif ($_POST['operation'] == 'chat_post'){
+//    include ('chat_post.php');
+//
+//}elseif ($_POST['operation'] == 'fetch_users'){
+//    include('fetch_users.php');
+//
+//}elseif ($_POST['operation'] == 'fetch_history'){
+//    include('fetch_history.php');
+//
+//}elseif ($_POST['operation'] == 'logout'){
+//    include('logout.php');
+//
+//}
 
-}elseif ($operation == 'add_user'){
-    include('add_user.php');
-
-}elseif ($operation == 'chat_post'){
-    include ('chat_post.php');
-
-}elseif ($operation == 'fetch_users'){
-    include('fetch_users.php');
-
-}elseif ($operation == 'fetch_history'){
-    include('fetch_history.php');
-
-}elseif ($operation == 'logout'){
-    include('logout.php');
-
-}else {
-    $data['errors'] = 'invalid operation';
-
-}
-
-$data = json_encode($data);
-print_r($data);
+$output = json_encode($output);
+print_r($output);
 
 
 ?>
