@@ -13,6 +13,8 @@ try{
 
     if (isset($login_result[0])){
         $output = ['success' => true, 'data' => $login_result];
+        $active_user = $dbh->query("UPDATE `users` SET `active` = '1' WHERE `login` = '$username'");
+        $_SESSION['users_id'] = $output['data'][0]['login'];
     } else{
         $output = ['success' => true, 'data' => 'invalid login information'];
     }

@@ -17,9 +17,7 @@ function entrance(username,password){
             console.log(response);
             console.log('im getting through');
 
-            if(response.success === true){
-                // location.reload();
-            }else{
+            if(response.data == "invalid login information"){
                 var fail_div = $('<div>',{
                     class:'login_fail'
                 });
@@ -28,6 +26,9 @@ function entrance(username,password){
                 });
                 $(fail_div).append(fail_text);
                 $('#login_section').append(fail_div);
+            }else{
+                location.reload();
+
             }
         }
     })
