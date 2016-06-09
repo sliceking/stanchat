@@ -43,17 +43,3 @@
             ?>
         </body>
     </html>
-
-<?php
-
-if (isset($_SESSION['users_id'])){
-    $check = $_SESSION['users_id'];
-?>
-    <script>
-        var check = '<?=$check?>';
-        console.log(check);
-    </script>
-<?php
-}
-
-?>

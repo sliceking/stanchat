@@ -57,12 +57,13 @@ function fetch_history() {
             operation:'fetch_history'
         },
         method: 'post',
-        url: './assets/fetch_history.php',
+        url: './assets/operations.php',
         success: function (response) {
-            var responseData = response.data;
+            console.log(response);
+            var responseData = response.results;
             var chat_history = $('#chat_history');
             $(chat_history).empty();
-            
+
             for(var i=0; i<responseData.length; i++){
                 var chat_div = $('<div>',{
                     class:'chat_line'

@@ -25,7 +25,6 @@ $operation = $_POST['operation'];
 
     }elseif ($operation == 'logout'){
         include('logout.php');
-//    $output = ['logout' => 'go'];
     }
 
 $output = json_encode($output);
