@@ -2,9 +2,7 @@
 
 try{
 
-    $query = "SELECT * FROM `chat_history`
-ORDER BY `chat_history`.`id`  DESC
-LIMIT 50";
+    $query = "SELECT * FROM `chat_history` ORDER BY `chat_history`.`id`  DESC LIMIT 50";
     $results = $dbh->query($query);
     $output = ['success' => true, 'results' => $results->fetchAll(PDO::FETCH_ASSOC)];
 } catch (Exception $e){
