@@ -34,17 +34,19 @@ function entrance(username,password){
     })
 }
 function logout(){
+    console.log('inside logout');
     $.ajax({
         dataType:'JSON',
-        url: './assets/logout.php',
+        url: './assets/operations.php',
         data:{
             operation:'logout'
         },
+        method: 'post',
         success: function(response){
-            var responseData = response;
-            console.log(responseData);
+            // var response = response;
+            console.log(response);
             console.log('logged out');
-            location.reload();
+            // location.reload();
         }
     })
 }
@@ -54,6 +56,7 @@ function fetch_history() {
         data:{
             operation:'fetch_history'
         },
+        method: 'post',
         url: './assets/fetch_history.php',
         success: function (response) {
             var responseData = response.data;
@@ -86,6 +89,7 @@ function fetch_online_users(){
             operation:'fetch_users'
         },
         url: './assets/fetch_users.php',
+        method: 'post',
         success: function (response) {
             var response = response;
             var responseData = response.data;
