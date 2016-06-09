@@ -6,7 +6,7 @@ $username = $_SESSION['users_id'];
 try{
 
     $results = $dbh->query("UPDATE  `users` SET  `active`='0' WHERE  `login` =  '$username'");
-    $output = ['success' => true, 'logout' => 'super perfect'];
+    $output = ['success' => true, 'logout' => 'yay'];
     session_unset();
     session_destroy();
     $output = json_encode($output);

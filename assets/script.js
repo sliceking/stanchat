@@ -46,7 +46,7 @@ function logout(){
             // var response = response;
             console.log(response);
             console.log('logged out');
-            // location.reload();
+            location.reload();
         }
     })
 }
