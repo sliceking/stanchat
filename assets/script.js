@@ -121,7 +121,7 @@ function chat_post(text){
             operation:'chat_post'
         },
         method: 'post',
-        url: './assets/chat_post.php',
+        url: './assets/operations.php',
         success: function(response){
             var responseData = response;
         }
