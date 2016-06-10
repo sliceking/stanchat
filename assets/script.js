@@ -59,7 +59,7 @@ function fetch_history() {
         method: 'post',
         url: './assets/operations.php',
         success: function (response) {
-            console.log(response);
+            // console.log(response);
             var responseData = response.results;
             var chat_history = $('#chat_history');
             $(chat_history).empty();
@@ -89,10 +89,12 @@ function fetch_online_users(){
         data:{
             operation:'fetch_users'
         },
-        url: './assets/fetch_users.php',
+        url: './assets/operations.php',
         method: 'post',
         success: function (response) {
             var response = response;
+
+            console.log(response);
             var responseData = response.data;
             var online_users = $('#online_users');
             $(online_users).empty();

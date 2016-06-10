@@ -5,7 +5,7 @@ $text = addslashes($_POST['text']);
 
 try{
 
-    $dbh->query("INSERT INTO `chat_history`(`user`, `text`) VALUES ('$username','$text')");
+    $results = $dbh->query("INSERT INTO `chat_history`(`user`, `text`) VALUES ('$username','$text')");
     $output = ['success' => true];
 
 }catch(Exception $e){
