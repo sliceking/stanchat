@@ -1,10 +1,9 @@
 <?php
 
 include('connection.php');
-$username = $_SESSION['users_id'];
 
 try{
-
+    $username = $_SESSION['users_id'];
     $results = $dbh->query("UPDATE  `users` SET  `active`='0' WHERE  `login` =  '$username'");
     session_unset();
     session_destroy();
